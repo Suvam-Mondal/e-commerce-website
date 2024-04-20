@@ -1,15 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/e-commerce-frontend/dist
+/e-commerce-frontend/tmp
+/e-commerce-frontend/out-tsc
+/e-commerce-frontend/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/e-commerce-frontend/node_modules
+/e-commerce-frontend/npm-debug.log
+/e-commerce-frontend/yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -40,7 +40,10 @@ testem.log
 /e-commerce-frontend/typings
 
 # System files
-.DS_Store
-Thumbs.db
+/e-commerce-frontend/.DS_Store
+/e-commerce-frontend/Thumbs.db
 ".angular/cached/"
 "e-commerce-frontend/.angular/cached/"
+
+
+/e-commerce-backend/.gradle/
