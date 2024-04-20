@@ -1,0 +1,36 @@
+form {
+  background-color: gray;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: white;
+  text-align: left;
+  width: 600px;
+  padding: 20px;
+
+}
+
+form button {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.form-center {
+  display: flex;
+  justify-content: center;
+}
+
+.div-center {
+  display: flex;
+}
+
+.div-center label {
+  width: 100px;
+  text-align: center;
+
+}
+
+.div-center input {
+  width: 150px;
+  text-align: center;
+}
