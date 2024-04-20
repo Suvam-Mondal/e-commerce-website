@@ -1,6 +1,7 @@
 **<h2>E-Commerce website</h2>**
 <hr>
-**<h4>Programming languages used</h4>** <br>
+<h4>Programming languages used:</h4> 
+<br>
   1. Front-end: Angular <br>
   2. Back-end: Springboot <br>
   3. Database: Firebase Database <br>
