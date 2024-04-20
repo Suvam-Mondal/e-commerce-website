@@ -5,6 +5,7 @@
   2. Back-end: Springboot
   3. Database: Firebase Database
 
+<div>
 1. Login Page
 ![login](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/106ed5c3-ca20-4a9d-82c2-93a09cd6a87c)
 
@@ -24,3 +25,5 @@
 
 6. Order Detail Page
 ![order-detail-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/f56cfa9e-9caa-493c-a0a2-073399a8039d)
+
+</div>
