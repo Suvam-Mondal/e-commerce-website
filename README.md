@@ -1,4 +1,4 @@
-<h2>**E-Commerce website**</h2>
+**<h2>E-Commerce website</h2>**
 <hr>
 **Programming languages used:** <br>
   1. Front-end: Angular <br>
