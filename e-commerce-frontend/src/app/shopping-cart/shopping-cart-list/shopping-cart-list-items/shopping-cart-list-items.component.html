@@ -1,0 +1,33 @@
+
+<div class="list-group-item clearfix  custom-list-item">
+  <table class="table">
+    <tr>
+      <td rowspan="4" style="height: 150px; width: 200px">
+        <img src="{{item.product.img}}" alt="{{item.product.name}}" style="height: 150px; ">
+      </td>
+    </tr>
+
+    <tr>
+      <td><h2>{{ item.product.name }}</h2></td>
+
+      <td rowspan="4">
+        <table>
+          <td>
+            <button class="btn" style="width: 50px; background-color: lightsalmon; color: black" (click)="onReduceItemQuantity()">-</button>
+          </td>
+          <td><h5>{{ item.quantity }}</h5></td>
+          <td>
+            <button class="btn" style="width: 50px; background-color: greenyellow; color: black" (click)="onIncreaseItemQuantity()">+</button>
+          </td>
+        </table>
+
+      </td>
+
+    </tr>
+
+    <tr>
+      <td><h3>INR {{totalPrice}}</h3></td>
+    </tr>
+
+  </table>
+</div>

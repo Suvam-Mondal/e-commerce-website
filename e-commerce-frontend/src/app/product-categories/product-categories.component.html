@@ -1,0 +1,8 @@
+<div>
+  <h3 style="color: white">Categories</h3>
+  <ul *ngFor="let item of categories"  class="list-group" style="cursor: pointer" >
+        <a [routerLink]="['/products/',item]">
+          <li routerLinkActive="active" class="list-group-item">{{ item | uppercase }}</li>
+        </a>
+  </ul>
+</div>

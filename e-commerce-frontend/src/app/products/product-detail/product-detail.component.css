@@ -1,0 +1,13 @@
+button {
+  background-color: greenyellow;
+  width: 100px;
+  color: black;
+}
+
+button click {
+  background-color: red;
+}
+
+td {
+  padding-right: 10px
+}

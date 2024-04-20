@@ -1,0 +1,20 @@
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: greenyellow;
+  color: black;
+}
+
+.full-height-div {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+.content {
+  flex-grow: 1;
+}
+
+*/
+

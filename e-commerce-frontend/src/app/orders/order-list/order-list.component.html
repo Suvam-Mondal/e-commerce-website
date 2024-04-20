@@ -1,0 +1,13 @@
+<div >
+
+  <div class="center-screen-div">
+    <h3 class="items">Order ID</h3>
+    <h3 class="items">Items in this order</h3>
+    <h3 class="items">View details</h3>
+  </div>
+  <br>
+  <app-order-list-item
+    *ngFor="let item of orderList;"
+    [item]="item" >
+  </app-order-list-item>
+</div>

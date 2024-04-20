@@ -1,0 +1,7 @@
+.custom-list-item {
+  background-color: lightgray;
+}
+
+.custom-list-item:hover {
+  background-color: greenyellow;
+}

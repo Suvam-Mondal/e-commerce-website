@@ -1,0 +1,18 @@
+<div *ngIf="cartList.length>0">
+  <div class="col-md-7 pull-left">
+    <app-shopping-cart-list-items
+      *ngFor="let item of cartList" [item]="item">
+    </app-shopping-cart-list-items>
+  </div>
+  <div class="col-md-5 pull-right full-height-div" style="padding: 10px" *ngIf="cartList.length>=1">
+    <button (click)="onClearCart()" class="btn btn-success" style="width: 300px; height: 50px">Clear Shopping Cart</button>
+    <br>
+    <button (click)="onBuy()" class="btn btn-success" style="width: 300px; height: 50px" >Buy</button>
+  </div>
+</div>
+
+<div *ngIf="cartList.length==0" style="height: 60vh;align-content: center">
+  <h3 style="text-align: center">Your cart is empty !</h3>
+  <br>
+  <button routerLink="/products/mobile" class="btn" style="width: 150px">Shop now</button>
+</div>

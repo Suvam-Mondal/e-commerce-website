@@ -1,0 +1,17 @@
+div {
+  height: 100%;
+  background-color: gray;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a li {
+  border-radius: 20px;
+}
+li:hover {
+  background-color: greenyellow;
+}

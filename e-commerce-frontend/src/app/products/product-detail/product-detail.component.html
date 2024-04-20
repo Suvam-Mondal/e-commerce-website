@@ -1,0 +1,34 @@
+<div>
+  <div class="container">
+    <div class="pull-left" style="width: 40%">
+      <img src="{{itemData.img}}" alt="{{itemData.name}}" style="height: 400px">
+    </div>
+    <div style="flex: 1; padding: 10px">
+      <h1>{{ itemData.name }}</h1>
+      <br>
+      <h4>INR {{ itemData.price }}</h4>
+
+      <div class="container">
+        <table>
+          <tr>
+            <td>
+              <button class="btn" (click)="onAddToCart()">Add to Cart</button>
+            </td>
+            <div *ngIf="shouldDisplayItemControls">
+              <td>
+                <button class="btn"  (click)="removeItem()">-</button>
+              </td>
+              <td><h4>{{ quantity }}</h4></td>
+              <td>
+                <button class="btn"  (click)="addItem()">+</button>
+              </td>
+            </div>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

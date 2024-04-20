@@ -1,0 +1,11 @@
+
+<div class="list-group-item center-screen-div">
+  <p class="items" >{{ item.orderId }}</p>
+  <div style="display: flex;flex-wrap: wrap; justify-content: center">
+  <div *ngFor="let i of item.orderList" style="display: flex; flex-direction: column; align-items: center">
+    <p class="items">{{ i.product.name }}({{ i.quantity}}) &nbsp;</p>
+  </div>
+  </div>
+  <p class="items"><a (click)="onViewDetail()">View</a></p>
+</div>
+

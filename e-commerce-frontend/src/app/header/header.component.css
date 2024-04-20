@@ -1,0 +1,22 @@
+nav {
+  background-color: gray;
+}
+
+.text-color{
+  color: white;
+}
+
+
+li:hover {
+  background-color: greenyellow;
+}
+
+
+.nav.navbar-nav li.active a {
+  background-color: greenyellow !important;
+  color: black;
+}
+
+.nav.navbar-nav li a {
+  color: white;
+}

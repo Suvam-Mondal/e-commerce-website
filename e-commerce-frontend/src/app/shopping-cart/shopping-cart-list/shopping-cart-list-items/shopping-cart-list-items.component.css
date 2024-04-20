@@ -1,0 +1,10 @@
+.custom-list-item {
+  background-color: gray;
+  border-radius: 20px;
+  color: white;
+}
+
+td {
+  padding: 10px
+}
+

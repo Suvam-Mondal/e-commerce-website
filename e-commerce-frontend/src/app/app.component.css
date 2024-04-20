@@ -1,0 +1,11 @@
+.items {
+  flex: 1;
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+
+a {
+  color: white;
+}
+

@@ -1,0 +1,23 @@
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.center-screen form {
+  text-align: left;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
+}
+
+.center-screen form button {
+  display: block;
+  margin: 0 auto;
+  background-color: greenyellow;
+  color: black;
+}

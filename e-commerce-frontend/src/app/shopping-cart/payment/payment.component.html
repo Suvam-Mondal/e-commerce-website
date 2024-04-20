@@ -1,0 +1,24 @@
+<div class="form-group">
+  <form class="form-group" [formGroup]="paymentForm" (ngSubmit)="onConfirmPay()">
+
+    <label for="ccId">Card No.</label>
+    <input id="ccId" type="text" class="form-control" [formControlName]="'ccNo'" style="width: 500px">
+
+    <br>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label for="ccExpDate">Card Expiry Date</label>
+        <input id="ccExpDate" type="text" class="form-control" [formControlName]="'ccExpDate'" style="width: 100px">
+      </div>
+      <div class="col-sm-2">
+        <label for="ccCvv">CVV:</label>
+        <input id="ccCvv" type="text" class="form-control" [formControlName]="'ccCvv'" style="width: 100px">
+      </div>
+    </div>
+    <br>
+    <div class="btn-block">
+      <button type="submit" class="btn btn-success" style="text-align: center; width: 100px">Pay</button>
+    </div>
+  </form>
+</div>
