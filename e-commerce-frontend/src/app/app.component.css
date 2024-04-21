@@ -9,3 +9,25 @@ a {
   color: white;
 }
 
+.footer {
+  background-color: gray;
+  height: 8vh;
+  position: fixed;
+  bottom: 0;
+  width: 100%
+}
+
+.header {
+  position:fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.body-content {
+  height: calc(100vh - 50px - 65px);
+  margin-top: 50px;
+  margin-bottom: 66px;
+
+
+}

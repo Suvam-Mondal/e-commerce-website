@@ -15,3 +15,7 @@ a li {
 li:hover {
   background-color: greenyellow;
 }
+
+.list-item {
+  z-index: 0;
+}
