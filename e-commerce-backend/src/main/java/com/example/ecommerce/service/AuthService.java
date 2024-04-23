@@ -14,6 +14,6 @@ public class AuthService {
     public String authenticate(Auth auth) throws ExecutionException, InterruptedException {
         RestTemplate restTemplate = new RestTemplate();
         auth.setReturnSecureToken(true);
-        return restTemplate.postForObject("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAVf79Vpmm3gy_ahAYXi5bHOQbm0vgaMkU", auth, String.class);
+        return restTemplate.postForObject("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=", auth, String.class);
     }
 }
