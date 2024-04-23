@@ -9,34 +9,44 @@
 <div>
 
 1. Login Page
+![login-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/17fcb8c3-9b36-4f28-80db-29675011e92b)
 
-![login](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/106ed5c3-ca20-4a9d-82c2-93a09cd6a87c)
 
 <hr>
 2. Products Page
 
-![products-mobile-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/a43684dc-6b04-4ba7-8fc7-b5af97d6f7c9)
+![product1-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/0fbf9052-d9ef-4058-81be-ef84c97decf3)
 
-![products-mobile-toys](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/4ddf2270-dbf9-4b47-ae48-c0fe912d25b6)
 
 <hr>
 3. Product Details Page
 
-![products-mobile-details-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/0e76f4fb-2cb6-4317-99d3-d5b23fd9659e)
+![product-detail-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/668291fb-0ab8-4391-9258-1e252f6774f5)
+
 
 <hr>
 4. Search Page
 
-![search-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/3b37222f-5bc9-4b8a-8ab1-5e3d83bc02d2)
+![search-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/718596d7-dcfb-4d38-a8f1-96a64655b905)
+
 
 <hr>
-5. Orders Page
 
-![order-list-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/120b2eda-0d77-4319-a96d-ca565a4bd497)
+5. Shopping Cart Page
+
+![shopping-cart-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/ec55b4a8-2f3a-45bf-ae3d-cc1bb06f62be)
+
 
 <hr>
-6. Order Detail Page
+6. Orders Page
 
-![order-detail-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/f56cfa9e-9caa-493c-a0a2-073399a8039d)
+![orders-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/0e82a1ca-6b98-4ada-adb0-73c3a0d84ee7)
+
+
+<hr>
+7. Order Detail Page
+
+![order-detail-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/7eded537-a387-453e-bdf3-7d7236d860dd)
+
 
 </div>
