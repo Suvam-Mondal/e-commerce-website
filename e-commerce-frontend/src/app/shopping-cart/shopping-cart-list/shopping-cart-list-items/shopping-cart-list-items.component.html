@@ -1,43 +1,8 @@
-<!--
-
-<div class="list-group-item clearfix  custom-list-item">
-  <table class="table">
-    <tr>
-      <td rowspan="4" style="height: 150px; width: 200px">
-        <img src="{{item.product.img}}" alt="{{item.product.name}}" style="height: 150px; ">
-      </td>
-    </tr>
-
-    <tr>
-      <td><h2>{{ item.product.name }}</h2></td>
-
-      <td rowspan="4">
-        <table>
-          <td>
-            <button class="btn" style="width: 50px; background-color: lightsalmon; color: black" (click)="onReduceItemQuantity()">-</button>
-          </td>
-          <td><h5>{{ item.quantity }}</h5></td>
-          <td>
-            <button class="btn" style="width: 50px; background-color: greenyellow; color: black" (click)="onIncreaseItemQuantity()">+</button>
-          </td>
-        </table>
-
-      </td>
-
-    </tr>
-
-    <tr>
-      <td><h3>INR {{totalPrice}}</h3></td>
-    </tr>
-
-  </table>
-</div>
--->
 
 <div class="list-group-item clearfix">
-  <div class="pull-left" style="display: flex; width: 80%">
+  <div class="pull-left item-detail-box" >
     <div class="pull-left">
-      <img src="{{item.product.img}}" alt="{{item.product.name}}" style="height: 150px; ">
+      <img src="{{item.product.img}}" alt="{{item.product.name}}">
     </div>
     <div class="pull-right">
       <h2>{{ item.product.name }}</h2>
@@ -45,15 +10,11 @@
     </div>
   </div>
 
-  <div class="pull-right" style="width: 20%;">
-    <div style="display: flex; justify-content:center; align-items: center;  height: 100px">
-      <button class="btn" style="width: 50px; background-color: lightsalmon; color: black; margin: auto"
-              (click)="onReduceItemQuantity()">-
-      </button>
+  <div class="pull-right controls-box">
+    <div>
+      <button class="btn btn-reduce" (click)="onReduceItemQuantity()">-</button>
       <h4  style="margin: 0 10px;">{{ item.quantity }}</h4>
-      <button class="btn" style="width: 50px; background-color: greenyellow; color: black; margin: auto"
-              (click)="onIncreaseItemQuantity()">+
-      </button>
+      <button class="btn btn-increase" (click)="onIncreaseItemQuantity()">+</button>
     </div>
   </div>
 </div>

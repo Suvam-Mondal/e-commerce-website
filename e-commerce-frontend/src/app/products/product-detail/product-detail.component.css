@@ -11,3 +11,16 @@ button click {
 td {
   padding-right: 10px
 }
+
+.img-div {
+  width: 40%;
+}
+
+.img-div img {
+  height: 400px;
+}
+
+.details-div {
+  flex: 1;
+  padding: 10px;
+}

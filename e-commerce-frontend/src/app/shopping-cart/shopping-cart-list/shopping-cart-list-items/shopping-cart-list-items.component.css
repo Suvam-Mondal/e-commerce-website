@@ -8,3 +8,36 @@ td {
   padding: 10px
 }
 
+.item-detail-box {
+  display: flex;
+  width: 80%;
+}
+
+.item-detail-box div img {
+  height: 150px;
+}
+
+.controls-box {
+  width: 20%;
+}
+
+.controls-box div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px
+}
+
+.btn-reduce {
+  width: 50px;
+  background-color: lightsalmon;
+  color: black;
+  margin: auto
+}
+
+.btn-increase {
+  width: 50px;
+  background-color: greenyellow;
+  color: black;
+  margin: auto
+}

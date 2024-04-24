@@ -3,10 +3,10 @@
   [routerLink]="itemIndex"
   (click) = "saveSelectedListItem()"
   class="list-group-item clearfix custom-list-item">
-  <span class="pull-left" style="width: 30%">
-    <img src="{{item.img}}" alt="imgText" style="height: 250px; width: 200px;">
+  <span class="pull-left img-box">
+    <img src="{{item.img}}" alt="imgText">
   </span>
-  <div class="pull-right" style="width: 70%">
+  <div class="pull-right detail-box" >
     <div>
       <h3 class="list-group-item-text">{{ item.name }}</h3>
       <br>

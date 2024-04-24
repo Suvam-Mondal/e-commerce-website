@@ -6,3 +6,17 @@
 .custom-list-item:hover {
   background-color: greenyellow;
 }
+
+.img-box {
+  width: 30%
+}
+
+.img-box img {
+  height: 200px;
+  background-color: transparent;
+}
+
+.detail-box {
+  width: 70%;
+  margin-top: 50px;
+}

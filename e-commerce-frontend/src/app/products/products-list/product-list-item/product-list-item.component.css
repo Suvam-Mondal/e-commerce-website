@@ -5,3 +5,16 @@
 .custom-list-item:hover {
   background-color: greenyellow;
 }
+
+.img-box {
+  width: 30%
+}
+
+.img-box img {
+  height: 200px;
+  width: 200px;
+}
+
+.detail-box {
+  width: 70%
+}

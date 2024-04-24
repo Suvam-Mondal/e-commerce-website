@@ -1,6 +1,9 @@
-/*
-.filter-and-list-container {
-  display: flex;
-  width: 100vh;
+.product-container {
+  display: flex;margin: auto
 }
-*/
+
+.categories {
+  width: 20%;
+  margin: 0;
+  padding: 0;
+}
