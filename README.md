@@ -13,9 +13,12 @@
 
 
 <hr>
-2. Products Page
+2. Products List Pages
 
-![product1-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/0fbf9052-d9ef-4058-81be-ef84c97decf3)
+![products-page-list](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/aebaa375-837f-41de-bb26-1041a27dc66d)
+
+![products-page-grid](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/b41cd84e-1e10-4df5-b017-b3c0602b32cf)
+
 
 
 <hr>
