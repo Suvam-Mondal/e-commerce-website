@@ -1,0 +1,10 @@
+.grid {
+  border: 5px solid gray;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.grid:hover {
+  border: 5px solid greenyellow;
+}
