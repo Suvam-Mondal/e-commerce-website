@@ -33,6 +33,9 @@ import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
 import {AuthService} from "./services/auth.service";
 import {OrderDetailComponent} from './orders/order-detail/order-detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GridComponent } from './products/products-list/product-grid-item/grid.component';
+import { SortProductsPipe } from './utils/sort-products.pipe';
 
 @NgModule({
   declarations: [
@@ -57,14 +60,17 @@ import {OrderDetailComponent} from './orders/order-detail/order-detail.component
     OrderListItemComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    GridComponent,
+    SortProductsPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [ProductService, CartService, SearchService, OrderPaymentsService, AuthService],
   bootstrap: [AppComponent]

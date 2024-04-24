@@ -1,22 +1,56 @@
-nav {
-  background-color: gray;
-}
 
-.text-color{
+.text-color {
   color: white;
 }
 
-
-li:hover {
-  background-color: greenyellow;
-}
-
-
-.nav.navbar-nav li.active a {
+li.active a {
   background-color: greenyellow !important;
   color: black;
 }
 
-.nav.navbar-nav li a {
+li a {
   color: white;
+  text-decoration: none;
 }
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: gray;
+}
+
+
+.search-div {
+  width: 40%;
+  margin-left: 10%;
+}
+
+.search-div input {
+  width: 80%;
+  border-radius: 20px;
+  padding-inline: 10px;
+  outline: none;
+  border: none;
+}
+
+
+.search-div img {
+  height: 25px;
+}
+
+.search-div button {
+  background-color: transparent;
+  border: none;
+}
+
+
+.right-menu {
+
+
+}
+
+
+
+
+

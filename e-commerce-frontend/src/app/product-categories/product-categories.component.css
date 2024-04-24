@@ -9,13 +9,45 @@ a {
   text-decoration: none;
 }
 
+
 a li {
   border-radius: 20px;
 }
+
 li:hover {
   background-color: greenyellow;
+  width: 90%;
+  font-size: 1.2rem;
 }
 
-.list-item {
-  z-index: 0;
+
+li.active, li.active:hover {
+  background-color: greenyellow;
+  color: black;
+  border: none;
+  font-size: 1.5rem;
+  width: 100%;
 }
+
+.list-group {
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 5px;
+
+
+}
+
+.list-group-item {
+  z-index: 0;
+  color: black;
+  width: 80%;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+h3 {
+  color: white;
+}
+

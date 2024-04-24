@@ -1,1 +1,19 @@
-<p>product-list-filter works!</p>
+<div class="filter">
+  <div>
+    <label for="sort">
+      Sort
+      <select id="sort"
+              (change)="onSortOptionSelected($event)"
+              name="SortProducts"
+              class="select"
+              #sortSelect>
+        <option value="default">Default</option>
+        <option value="price">Price</option>
+      </select>
+    </label>
+  </div>
+  <div class="toggle-list-view">
+    <fa-icon (click)="onChangeListView()" [icon]="isDisplayAsList ? faList : faBorderAll" size="2x"></fa-icon>
+  </div>
+
+</div>

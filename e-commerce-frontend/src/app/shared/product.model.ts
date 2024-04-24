@@ -5,4 +5,5 @@ export interface ProductModel {
   img: string;
   brand: string;
   category: string;
+ // rating: number;
 }

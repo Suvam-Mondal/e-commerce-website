@@ -2,11 +2,14 @@ import {Injectable, OnInit} from "@angular/core";
 import {ProductModel} from "../shared/product.model";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class ProductService implements OnInit {
 
   productForCategory: ProductModel[] = [];
+  displayListToggle = new Subject<boolean>();
+  sortBy = new Subject<string>();
 
   constructor(private http: HttpClient,
               private authService: AuthService) {
@@ -30,6 +33,7 @@ export class ProductService implements OnInit {
           let img = i.img;
           let brand = i.brand;
           let category = i.category;
+         // let rating = i.rating;
 
           let product: ProductModel = {
             document_id: id,
@@ -37,17 +41,38 @@ export class ProductService implements OnInit {
             price: price,
             brand: brand,
             category: category,
-            img: img
+            img: img,
+            //rating: rating
           };
           this.productForCategory.push(product);
 
         }
+        //localStorage.setItem('productListForCategory', JSON.stringify(this.productForCategory));
+
       }, error => {
         console.log("Error while fetching products ", error.messageerror);
       })
-    localStorage.setItem('productListForCategory', JSON.stringify(this.productForCategory));
+
     return this.productForCategory;
   }
 
+
+  updateDisplayListToggle(isDisplayAsList: boolean) {
+    localStorage.setItem('displayToggleValue', JSON.stringify(isDisplayAsList));
+    this.displayListToggle.next(isDisplayAsList);
+  }
+
+  sortList(value: string) {
+    localStorage.setItem('sortByKey', value);
+    this.sortBy.next(value);
+  }
+
+  getStoredSortByValue() {
+    return localStorage.getItem('sortByKey');
+  }
+
+  getStoredDisplayToggleValue() {
+    return JSON.parse(localStorage.getItem('displayToggleValue'));
+  }
 
 }

@@ -13,7 +13,11 @@ export class ProductsListComponent  implements OnInit, OnDestroy{
   productList: ProductModel[];
 
   currentCategorySubscriber = new Subscription();
+  displayListToggleSubscriber = new Subscription();
+  sortBySubscriber = new Subscription();
   selectedCategory: string;
+  shouldDisplayAsList: boolean;
+  sortItemsBy: string;
 
 
   constructor(private productService: ProductService,
@@ -21,14 +25,32 @@ export class ProductsListComponent  implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
+
+    this.sortItemsBy = this.productService.getStoredSortByValue();
+    this.shouldDisplayAsList = this.productService.getStoredDisplayToggleValue();
+
     this.activatedRoute.paramMap.subscribe(params =>  {
       this.selectedCategory = params.get('category');
       this.productList = this.productService.getProductListForCategory(this.selectedCategory);
     });
 
+   this.displayListToggleSubscriber = this.productService.displayListToggle
+     .subscribe(newVal => {
+       this.shouldDisplayAsList = newVal;
+   });
+
+   this.sortBySubscriber = this.productService.sortBy
+     .subscribe(newVal => {
+       this.sortItemsBy = newVal;
+
+   });
+
+
   }
 
   ngOnDestroy(): void {
     this.currentCategorySubscriber.unsubscribe();
+    this.displayListToggleSubscriber.unsubscribe();
+    this.sortBySubscriber.unsubscribe();
   }
 }
