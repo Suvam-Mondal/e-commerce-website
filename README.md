@@ -9,44 +9,49 @@
 <div>
 
 1. Login Page
-![login-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/17fcb8c3-9b36-4f28-80db-29675011e92b)
 
+![login](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/4821310b-4e6d-4a6b-8ac4-aa46e6e5dc23)
 
 <hr>
-2. Products Page
+2. Products List Pages
 
-![product1-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/0fbf9052-d9ef-4058-81be-ef84c97decf3)
+![products-page-list](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/aebaa375-837f-41de-bb26-1041a27dc66d)
+
+![products-page-grid](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/b41cd84e-1e10-4df5-b017-b3c0602b32cf)
+
 
 
 <hr>
 3. Product Details Page
 
-![product-detail-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/668291fb-0ab8-4391-9258-1e252f6774f5)
+![product-details](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/d7b27b23-3072-4a96-bc00-beaa71b6cf24)
 
 
 <hr>
 4. Search Page
 
-![search-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/718596d7-dcfb-4d38-a8f1-96a64655b905)
+![search-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/24282f95-8472-41bb-a96d-ba118ca19755)
 
 
 <hr>
 
 5. Shopping Cart Page
 
-![shopping-cart-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/ec55b4a8-2f3a-45bf-ae3d-cc1bb06f62be)
+![shopping-cart-empty](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/38093acc-ca3e-488b-9228-e43646b4ba80)
+
+![shopping-cart](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/ba1c84de-5529-4510-82d6-c692b3117918)
 
 
 <hr>
 6. Orders Page
 
-![orders-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/0e82a1ca-6b98-4ada-adb0-73c3a0d84ee7)
+![orders-list-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/f6afc8f9-4ed3-4b8c-9f28-c1e87e901049)
 
 
 <hr>
 7. Order Detail Page
 
-![order-detail-screen](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/7eded537-a387-453e-bdf3-7d7236d860dd)
+![order-details-page](https://github.com/Suvam-Mondal/e-commerce-website/assets/14257800/5baee9e4-9604-42c8-8155-3c2ae27a53fc)
 
 
 </div>
