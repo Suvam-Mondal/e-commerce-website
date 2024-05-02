@@ -41,6 +41,7 @@ export class CartService {
 
   resetShoppingCart() {
     this.shoppingCart = [];
+    localStorage.removeItem('shoppingCartList');
   }
 
   removeItemFromCart(productId: string) {

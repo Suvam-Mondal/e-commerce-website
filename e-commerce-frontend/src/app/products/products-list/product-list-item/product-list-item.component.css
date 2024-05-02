@@ -1,9 +1,11 @@
 .custom-list-item {
-  background-color: lightgray;
+  /*background-color: lightgray;*/
+  border: 5px solid lightgray;
 }
 
 .custom-list-item:hover {
-  background-color: greenyellow;
+ /* background-color: greenyellow;*/
+  border : 5px solid greenyellow;
 }
 
 .img-box {
