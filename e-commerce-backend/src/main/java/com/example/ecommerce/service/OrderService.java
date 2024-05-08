@@ -3,6 +3,7 @@ package com.example.ecommerce.service;
 import com.example.ecommerce.model.OrderItemList;
 import com.example.ecommerce.model.OrderPayment;
 import com.example.ecommerce.model.PaymentInfo;
+import com.example.ecommerce.repo.OrdersRepo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,25 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class OrderService {
 
+    private final OrdersRepo ordersRepo;
+
+    public OrderService(final OrdersRepo ordersRepo) {
+        this.ordersRepo = ordersRepo;
+    }
+
+    public List<com.example.ecommerce.entity.OrderPayment> getOrdersForUser(String userId) {
+
+        return ordersRepo.findAll();
+
+    }
+
+    public void saveOrder(com.example.ecommerce.entity.OrderPayment orderPayment)  {
+        ordersRepo.save(orderPayment);
+
+    }
+
+
+/*   firebase db
     public List<OrderPayment> getOrdersForUser(String userId, String authToken) throws JsonProcessingException {
 
         RestTemplate restTemplate = new RestTemplate();
@@ -70,5 +90,5 @@ public class OrderService {
         ResponseEntity<String> response = restTemplate.exchange("https://angular-demo-prj-default-rtdb.firebaseio.com/orders_table.json?auth="+authToken, HttpMethod.POST, entity, String.class);
 
         log.info("Saved... {}", response);
-    }
+    }*/
 }

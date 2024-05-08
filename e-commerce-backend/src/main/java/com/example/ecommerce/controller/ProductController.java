@@ -24,12 +24,40 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping
+
+
+    @PostMapping("/mongo/store")
+    public void storeProducts_mongo() {
+        productService.storeProducts1_mongo();
+        productService.storeProducts2_mongo();
+    }
+
+    @GetMapping("/mongo/all")
+    public List<com.example.ecommerce.entity.Product> getAllProductsFromMongo() {
+        return productService.getProducts();
+    }
+
+
+    @GetMapping("/mongo/{category}")
+    public List<com.example.ecommerce.entity.Product> getProductsForCategory(@PathVariable("category") String category) {
+        return productService.getProductsForCategory(category.toLowerCase());
+    }
+
+    @GetMapping("/mongo/search/{searchKey}")
+    public List<com.example.ecommerce.entity.Product> getProductsForSearchKey(@PathVariable String searchKey)  {
+        return productService.getProductsForSearchKey(searchKey.toLowerCase());
+    }
+
+
+
+/*
+    for firebase db
+
+     @PostMapping
     public void storeProducts() {
         productService.storeProducts1();
         productService.storeProducts2();
     }
-
 
     @GetMapping("/all")
     public List<Product> getAllProducts(@RequestParam("auth") String authToken) throws JsonProcessingException {
@@ -45,6 +73,7 @@ public class ProductController {
     public List<Product> getProductsForSearchKey(@RequestParam String authToken, @PathVariable String searchKey) throws ExecutionException, InterruptedException, JsonProcessingException {
         return productService.getProductsForSearchKey(searchKey, authToken);
     }
+*/
 
 
 }
