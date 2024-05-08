@@ -11,7 +11,8 @@ import {AuthComponent} from "./auth/auth.component";
 import {OrderDetailComponent} from "./orders/order-detail/order-detail.component";
 
 const routes: Routes = [
-  {path:'', redirectTo:"/products/mobile", pathMatch:"full"},
+  {path:'', redirectTo:"/login", pathMatch:"full"},
+   {path:'login', component: AuthComponent},
   {path:'products', redirectTo:"/products/mobile", pathMatch:"full"},
   {path:'products/:category', component:ProductsComponent},
   {path:'products/:category/:id', component:ProductDetailComponent},
@@ -20,8 +21,7 @@ const routes: Routes = [
   {path:'search/:id', component:SearchItemDetailComponent},
   {path:'payment', component: PaymentComponent},
   {path:'orders', component: OrdersComponent},
-  {path:'orders/:orderId', component: OrderDetailComponent},
-  {path:'login', component: AuthComponent}
+  {path:'orders/:orderId', component: OrderDetailComponent}
 ];
 
 @NgModule({

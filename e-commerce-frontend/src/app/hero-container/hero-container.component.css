@@ -1,0 +1,30 @@
+
+
+.container {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.middle::-webkit-scrollbar {
+  display: none;
+}
+
+.info-widget {
+  width: 100%;
+  display: inline-block;
+}
+
+.middle {
+  float: left;
+  width: 100%;
+  overflow: auto;
+  /*will change this to hidden later to deny scolling to user*/
+  white-space: nowrap;
+
+}
+
+.fa:hover {
+  color: greenyellow;
+}

@@ -3,6 +3,7 @@ import {ProductModel} from "../shared/product.model";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {Subject} from "rxjs";
+import {Details} from "../shared/product-details.model";
 
 @Injectable()
 export class ProductService implements OnInit {
@@ -24,7 +25,7 @@ export class ProductService implements OnInit {
 
     this.productForCategory = [];
 
-    this.http.get<ProductModel[]>(`http://localhost:8081/products/${category}?authToken=${authToken.token}`)
+    this.http.get<ProductModel[]>(`http://localhost:8081/products/mongo/${category}?authToken=${authToken.token}`)
       .subscribe(response => {
         for (let i of response) {
           let id = i.document_id;
@@ -33,7 +34,8 @@ export class ProductService implements OnInit {
           let img = i.img;
           let brand = i.brand;
           let category = i.category;
-         // let rating = i.rating;
+          let rating = i.rating;
+          let detail = i.details;
 
           let product: ProductModel = {
             document_id: id,
@@ -42,7 +44,8 @@ export class ProductService implements OnInit {
             brand: brand,
             category: category,
             img: img,
-            //rating: rating
+            rating: rating,
+            details: detail
           };
           this.productForCategory.push(product);
 

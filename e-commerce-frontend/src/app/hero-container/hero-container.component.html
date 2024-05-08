@@ -1,0 +1,20 @@
+<div class="container">
+  <div style="float: left" >
+    <i class="fa fa-chevron-left fa-2x" aria-hidden="true" (click)="scrollLeft()" ></i>
+  </div>
+
+  <div #widgetsContent class="middle">
+    <div *ngFor="let text of item" class="info-widget">
+      <div style=" white-space: normal; ">
+        <h1  style="font-size: 27px; color: gray">{{text.keyText}}</h1>
+      </div>
+      <br>
+      <img [src]="text.imgPath" alt="img" style="width: 100%;">
+    </div>
+
+  </div>
+
+  <div style="float: right">
+    <i class="fa fa-chevron-right fa-2x" aria-hidden="true" (click)="scrollRight()"></i>
+  </div>
+</div>

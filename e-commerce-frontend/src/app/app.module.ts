@@ -36,6 +36,12 @@ import {OrderDetailComponent} from './orders/order-detail/order-detail.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GridComponent } from './products/products-list/product-grid-item/grid.component';
 import { SortProductsPipe } from './utils/sort-products.pipe';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatIcon} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import {MatListModule} from "@angular/material/list";
+import { HeroContainerComponent } from './hero-container/hero-container.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +68,9 @@ import { SortProductsPipe } from './utils/sort-products.pipe';
     LoadingSpinnerComponent,
     OrderDetailComponent,
     GridComponent,
-    SortProductsPipe
+    SortProductsPipe,
+    StarRatingComponent,
+    HeroContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +78,12 @@ import { SortProductsPipe } from './utils/sort-products.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatIcon,
+    MatCardModule,
+    MatListModule
   ],
-  providers: [ProductService, CartService, SearchService, OrderPaymentsService, AuthService],
+  providers: [ProductService, CartService, SearchService, OrderPaymentsService, AuthService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule {

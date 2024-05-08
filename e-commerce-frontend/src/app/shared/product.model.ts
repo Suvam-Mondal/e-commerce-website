@@ -1,3 +1,5 @@
+import {Details} from "./product-details.model";
+
 export interface ProductModel {
   document_id: string
   name: string;
@@ -5,5 +7,6 @@ export interface ProductModel {
   img: string;
   brand: string;
   category: string;
- // rating: number;
+  rating: number;
+  details: Details[];
 }

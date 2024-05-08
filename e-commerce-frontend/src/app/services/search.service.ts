@@ -26,7 +26,7 @@ export class SearchService {
     let authToken = this.authService.getUserData();
 
     this.searchList = [];
-    this.http.get<ProductModel[]>(`http://localhost:8081/products/search/${searchKey}?authToken=${authToken.token}`)
+    this.http.get<ProductModel[]>(`http://localhost:8081/products/mongo/search/${searchKey}?authToken=${authToken.token}`)
       .subscribe(response =>{
         for (let i of response) {
           let id = i.document_id;
@@ -35,8 +35,11 @@ export class SearchService {
           let img = i.img;
           let brand = i.brand;
           let category = i.category;
+          let rating = i.rating;
+          let detail = i.details;
 
-          let product: ProductModel = {document_id: id, name: name, price: price, brand: brand, category: category, img: img};
+          let product: ProductModel = {document_id: id, name: name, price: price, brand: brand, category: category, img: img, rating:rating,
+            details: detail};
           this.searchList.push(product);
 
         }
