@@ -9,10 +9,12 @@ import {PaymentComponent} from "./shopping-cart/payment/payment.component";
 import {OrdersComponent} from "./orders/orders.component";
 import {AuthComponent} from "./auth/auth.component";
 import {OrderDetailComponent} from "./orders/order-detail/order-detail.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {path:'', redirectTo:"/login", pathMatch:"full"},
    {path:'login', component: AuthComponent},
+   {path:'home', component: HomeComponent},
   {path:'products', redirectTo:"/products/mobile", pathMatch:"full"},
   {path:'products/:category', component:ProductsComponent},
   {path:'products/:category/:id', component:ProductDetailComponent},

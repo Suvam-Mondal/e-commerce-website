@@ -42,6 +42,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import { HeroContainerComponent } from './hero-container/hero-container.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { HeroContainerComponent } from './hero-container/hero-container.componen
     GridComponent,
     SortProductsPipe,
     StarRatingComponent,
-    HeroContainerComponent
+    HeroContainerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
