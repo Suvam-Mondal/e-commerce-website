@@ -1,7 +1,7 @@
 package com.example.ecommerce.service;
 
+import com.example.ecommerce.entity.Product;
 import com.example.ecommerce.entity.ProductDetail;
-import com.example.ecommerce.model.Product;
 import com.example.ecommerce.repo.ProductRepo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -299,7 +299,7 @@ public class ProductService {
 
 
 
-        com.example.ecommerce.entity.Product googlePixel8 = new com.example.ecommerce.entity.Product();
+        Product googlePixel8 = new com.example.ecommerce.entity.Product();
         googlePixel8.setDocument_id(UUID.randomUUID().toString());
         googlePixel8.setName("Pixel 8 5G, 8GB RAM, 128GB Storage (Rose)");
         googlePixel8.setPrice(70000L);
@@ -464,6 +464,15 @@ public class ProductService {
         peterEnglandShirt.setBrand("Peter England");
         peterEnglandShirt.setCategory("clothing");
         peterEnglandShirt.setImg("https://m.media-amazon.com/images/I/61ZdMVCSnhL._SY741_.jpg");
+        ProductDetail peterEnglandShirtProdetails1 = new ProductDetail();
+        ProductDetail peterEnglandShirtProdetails2 = new ProductDetail();
+        peterEnglandShirtProdetails1.setKeyText("");
+        peterEnglandShirtProdetails1.setImgPath("https://m.media-amazon.com/images/I/61abAM12J9L._SY741_.jpg");
+        peterEnglandShirtProdetails2.setKeyText("");
+        peterEnglandShirtProdetails2.setImgPath("https://m.media-amazon.com/images/I/61-JoJCyvML._SY741_.jpg");
+        List<ProductDetail> detailsList8 = new ArrayList<>();
+        detailsList8.add(peterEnglandShirtProdetails1);detailsList8.add(peterEnglandShirtProdetails2);
+        peterEnglandShirt.setDetails(detailsList8);
 
         com.example.ecommerce.entity.Product peterEnglandShirt2 = new com.example.ecommerce.entity.Product();
         peterEnglandShirt2.setDocument_id(UUID.randomUUID().toString());
@@ -473,6 +482,15 @@ public class ProductService {
         peterEnglandShirt2.setBrand("Peter England");
         peterEnglandShirt2.setCategory("clothing");
         peterEnglandShirt2.setImg("https://m.media-amazon.com/images/I/51ystSbVCQL._SY741_.jpg");
+        ProductDetail peterEnglandShirt2Prodetails1 = new ProductDetail();
+        ProductDetail peterEnglandShirt2Prodetails2 = new ProductDetail();
+        peterEnglandShirt2Prodetails1.setKeyText("");
+        peterEnglandShirt2Prodetails1.setImgPath("https://m.media-amazon.com/images/I/518kaW9wg8L._SY741_.jpg");
+        peterEnglandShirt2Prodetails2.setKeyText("");
+        peterEnglandShirt2Prodetails2.setImgPath("https://m.media-amazon.com/images/I/51pyOXghI3L._SY741_.jpg");
+        List<ProductDetail> detailsList9 = new ArrayList<>();
+        detailsList9.add(peterEnglandShirt2Prodetails1);detailsList9.add(peterEnglandShirt2Prodetails2);
+        peterEnglandShirt2.setDetails(detailsList9);
 
         com.example.ecommerce.entity.Product theSouledStore = new com.example.ecommerce.entity.Product();
         theSouledStore.setDocument_id(UUID.randomUUID().toString());
@@ -482,6 +500,16 @@ public class ProductService {
         theSouledStore.setBrand("The Souled Store");
         theSouledStore.setCategory("clothing");
         theSouledStore.setImg("https://m.media-amazon.com/images/I/61bPqVAuGOL._SY741_.jpg");
+        ProductDetail theSouledStoreProdetails1 = new ProductDetail();
+        ProductDetail theSouledStoreProdetails2 = new ProductDetail();
+        theSouledStoreProdetails1.setKeyText("");
+        theSouledStoreProdetails1.setImgPath("https://m.media-amazon.com/images/I/61oZzGGfuRL._SY741_.jpg");
+        theSouledStoreProdetails2.setKeyText("");
+        theSouledStoreProdetails2.setImgPath("https://m.media-amazon.com/images/I/610ImiG7AYL._SY741_.jpg");
+        List<ProductDetail> detailsList10 = new ArrayList<>();
+        detailsList10.add(theSouledStoreProdetails1);detailsList10.add(theSouledStoreProdetails2);
+        theSouledStore.setDetails(detailsList10);
+
 
         com.example.ecommerce.entity.Product theSouledStore2 = new com.example.ecommerce.entity.Product();
         theSouledStore2.setDocument_id(UUID.randomUUID().toString());
@@ -491,6 +519,15 @@ public class ProductService {
         theSouledStore2.setBrand("The Souled Store");
         theSouledStore2.setCategory("clothing");
         theSouledStore2.setImg("https://m.media-amazon.com/images/I/71ck2zlPMLL._SY879_.jpg");
+        ProductDetail theSouledStore2Prodetails1 = new ProductDetail();
+        ProductDetail theSouledStore2Prodetails2 = new ProductDetail();
+        theSouledStore2Prodetails1.setKeyText("");
+        theSouledStore2Prodetails1.setImgPath("https://m.media-amazon.com/images/I/712orXIYQEL._SY741_.jpg");
+        theSouledStore2Prodetails2.setKeyText("");
+        theSouledStore2Prodetails2.setImgPath("https://m.media-amazon.com/images/I/71DTiBQVkjL._SY741_.jpg");
+        List<ProductDetail> detailsList11 = new ArrayList<>();
+        detailsList11.add(theSouledStore2Prodetails1);detailsList11.add(theSouledStore2Prodetails2);
+        theSouledStore2.setDetails(detailsList11);
 
         com.example.ecommerce.entity.Product leeCooper = new com.example.ecommerce.entity.Product();
         leeCooper.setDocument_id(UUID.randomUUID().toString());
@@ -500,7 +537,15 @@ public class ProductService {
         leeCooper.setBrand("Lee Cooper");
         leeCooper.setCategory("clothing");
         leeCooper.setImg("https://m.media-amazon.com/images/I/91t89qKUjuL._SY879_.jpg");
-
+        ProductDetail leeCooperProdetails1 = new ProductDetail();
+        ProductDetail leeCooperProdetails2 = new ProductDetail();
+        leeCooperProdetails1.setKeyText("");
+        leeCooperProdetails1.setImgPath("https://m.media-amazon.com/images/I/71HTar2n1pL._SY741_.jpg");
+        leeCooperProdetails2.setKeyText("");
+        leeCooperProdetails2.setImgPath("https://m.media-amazon.com/images/I/61XOPDhVxbL._SY741_.jpg");
+        List<ProductDetail> detailsList12 = new ArrayList<>();
+        detailsList12.add(leeCooperProdetails1);detailsList12.add(leeCooperProdetails2);
+        leeCooper.setDetails(detailsList12);
 
         products.add(peterEnglandShirt);
         products.add(peterEnglandShirt2);

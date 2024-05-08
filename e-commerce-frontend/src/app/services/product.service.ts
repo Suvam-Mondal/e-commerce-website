@@ -48,6 +48,9 @@ export class ProductService implements OnInit {
             details: detail
           };
           this.productForCategory.push(product);
+          if(category === 'clothing') {
+            console.log("product::", product);
+            }
 
         }
         //localStorage.setItem('productListForCategory', JSON.stringify(this.productForCategory));

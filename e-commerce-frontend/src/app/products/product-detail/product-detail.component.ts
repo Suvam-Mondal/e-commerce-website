@@ -31,7 +31,6 @@ export class ProductDetailComponent implements  OnInit{
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        console.log("scrolling up");
         window.scrollTo(0, 0); // Scrolls to the top of the page
       });
     this.activatedRoute
