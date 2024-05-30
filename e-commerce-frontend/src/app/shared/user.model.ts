@@ -1,6 +1,6 @@
 export class UserModel {
 
-  constructor(public email: string,
+  /* constructor(public email: string,
               public id: string,
               private _token: string,
               private _tokenExpiryDate: Date) {}
@@ -10,5 +10,7 @@ export class UserModel {
       return null;
     }
     return this._token;
-  }
+  } */
+ constructor(public email: string,public authToken: string) {}
+
 }

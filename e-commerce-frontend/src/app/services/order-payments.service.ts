@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {OrderPaymentsModel} from "../shared/order-payments.model";
 import {Router} from "@angular/router";
 import {CartService} from "./cart.service";
@@ -16,8 +16,15 @@ export class OrderPaymentsService {
   }
 
   saveOrder(orderPaymentInfo: OrderPaymentsModel) {
-    let authToken = this.authService.getUserData();
-    this.http.post(`http://localhost:8081/orders?authToken=${authToken.token}`,orderPaymentInfo)
+    let userData = this.authService.getUserData();
+
+      const headers = new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer '+userData.authToken
+              });
+
+
+    this.http.post(`http://localhost:8081/orders`,orderPaymentInfo, {headers})
       .subscribe(response => {
         this.cartService.resetShoppingCart();
         this.router.navigate(["/orders"]);
@@ -31,6 +38,11 @@ export class OrderPaymentsService {
 
   getOrderForUser() {
     let userData = this.authService.getUserData();
-    return this.http.get<OrderPaymentsModel[]>(`http://localhost:8081/orders?authToken=${userData.token}&userEmail=${userData.email}`);
+      const headers = new HttpHeaders({
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer '+userData.authToken
+                  });
+
+    return this.http.get<OrderPaymentsModel[]>(`http://localhost:8081/orders?userEmail=${userData.email}`,{headers});
   }
 }

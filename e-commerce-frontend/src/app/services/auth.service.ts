@@ -16,13 +16,12 @@ export class AuthService {
               private http: HttpClient) {
   }
 
-  onLogin(auth: AuthModel) {
+ /*  onLogin(auth: AuthModel) {
 
     this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth)
       .subscribe(response => {
         console.log("Successfully logged in...");
         this.isAuthenticated.next(true);
-        //this.isAuthenticated = true;
         const expiryDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
         this.user = new UserModel(response.email, response.localId, response.idToken, expiryDate);
         localStorage.setItem('userData',JSON.stringify(this.user));
@@ -34,7 +33,28 @@ export class AuthService {
         console.log("Error while logging in...", error.messageerror);
       });
 
+  } */
+
+  onLogin(auth: AuthModel) {
+    auth.role = "USER";
+    console.log("Sending onLogin request for ", auth);
+    this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth)
+      .subscribe(response => {
+        console.log("Successfully logged in...",response.authToken);
+        this.isAuthenticated.next(true);
+        //const expiryDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
+        this.user = new UserModel(auth.emailId, response.authToken);
+        localStorage.setItem('userData',JSON.stringify(this.user));
+       // this.user.next(user);
+      //  this.autoLogout(+response.expiresIn * 1000);
+        this.router.navigate(["/products/mobile"]);
+
+      }, error => {
+        console.log("Error while logging in...", error);
+      });
+
   }
+
 
   onLogOut() {
     //save cartList if any
@@ -53,7 +73,7 @@ export class AuthService {
 
   }
 
-  autoLogin() {
+  /* autoLogin() {
     const userData: {email: string, id: string, _token: string, _tokenExpiryDate: string} = JSON.parse(localStorage.getItem('userData'));
 
      if (userData != null) {
@@ -72,7 +92,7 @@ export class AuthService {
     setTimeout(() => {
       this.onLogOut();
     }, expirationDuration);
-  }
+  } */
 
   getUserData() {
     return this.user;

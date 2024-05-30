@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit{
   onLogin() {
     let email = this.loginForm.get('email').value;
     let pwd = this.loginForm.get('pwd').value;
-    let auth: AuthModel = {email: email, password: pwd};
+    let auth: AuthModel = {emailId: email, password: pwd, role: 'USER'};
     this.authService.onLogin(auth);
 
   }

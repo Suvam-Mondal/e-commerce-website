@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import {ProductModel} from "../shared/product.model";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 
 @Injectable()
@@ -23,10 +23,15 @@ export class SearchService {
   }
 
   getProductListMatchingSearchParam(searchKey: string, searchCategory: string) {
-    let authToken = this.authService.getUserData();
+    let userData = this.authService.getUserData();
+
+    const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer '+userData.authToken
+          });
 
     this.searchList = [];
-    this.http.get<ProductModel[]>(`http://localhost:8081/products/mongo/search/${searchKey}?authToken=${authToken.token}`)
+    this.http.get<ProductModel[]>(`http://localhost:8081/products/mongo/search/${searchKey}`, {headers})
       .subscribe(response =>{
         for (let i of response) {
           let id = i.document_id;

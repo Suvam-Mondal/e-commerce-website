@@ -17,7 +17,7 @@
   <div class="right-menu">
     <ul class="nav navbar-nav">
       <li  routerLinkActive="active" >
-        <a routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+        <a routerLink="/login" *ngIf="!isLoggedIn">Login/Signup</a>
         <a (click)="onLogout()" *ngIf="isLoggedIn">Logout</a>
       </li>
       <li  routerLinkActive="active"><a routerLink="/cart">Cart</a></li>
