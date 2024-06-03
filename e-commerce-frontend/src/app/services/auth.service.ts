@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {AuthModel} from "../shared/auth.model";
@@ -16,41 +16,26 @@ export class AuthService {
               private http: HttpClient) {
   }
 
- /*  onLogin(auth: AuthModel) {
-
-    this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth)
-      .subscribe(response => {
-        console.log("Successfully logged in...");
-        this.isAuthenticated.next(true);
-        const expiryDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
-        this.user = new UserModel(response.email, response.localId, response.idToken, expiryDate);
-        localStorage.setItem('userData',JSON.stringify(this.user));
-       // this.user.next(user);
-        this.autoLogout(+response.expiresIn * 1000);
-        this.router.navigate(["/products/mobile"]);
-
-      }, error => {
-        console.log("Error while logging in...", error.messageerror);
+ 
+  onLogin(auth: AuthModel, action: string) {
+    auth.role = "USER";
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Action': action
       });
 
-  } */
-
-  onLogin(auth: AuthModel) {
-    auth.role = "USER";
     console.log("Sending onLogin request for ", auth);
-    this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth)
+    this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth, {headers})
       .subscribe(response => {
-        console.log("Successfully logged in...",response.authToken);
+        console.log("Successfully logged in...",response.authToken, "expiresIn ",response.expiresIn);
         this.isAuthenticated.next(true);
-        //const expiryDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
-        this.user = new UserModel(auth.emailId, response.authToken);
+        this.user = new UserModel(auth.emailId, response.authToken, response.expiresIn);
         localStorage.setItem('userData',JSON.stringify(this.user));
-       // this.user.next(user);
-      //  this.autoLogout(+response.expiresIn * 1000);
+        this.autoLogout(response.expiresIn);
         this.router.navigate(["/products/mobile"]);
-
       }, error => {
         console.log("Error while logging in...", error);
+        this.isAuthenticated.next(false);
       });
 
   }
@@ -73,26 +58,41 @@ export class AuthService {
 
   }
 
-  /* autoLogin() {
-    const userData: {email: string, id: string, _token: string, _tokenExpiryDate: string} = JSON.parse(localStorage.getItem('userData'));
+  isUserLoggedIn() {
+    const userData: {emailId: string, authToken: string, expiresIn: Date} = JSON.parse(localStorage.getItem('userData'));
+
+    if (userData != null) {
+      const u = new UserModel(userData.emailId, userData.authToken, userData.expiresIn);
+      if (u.authToken) {
+        return true;
+      } else {
+        return false;
+      }
+   }
+  }
+
+
+
+   autoLogin() {
+    const userData: {emailId: string, authToken: string, expiresIn: Date} = JSON.parse(localStorage.getItem('userData'));
 
      if (userData != null) {
-        const u = new UserModel(userData.email,userData.id,userData._token,new Date(userData._tokenExpiryDate));
-        if (u.token) {
+        const u = new UserModel(userData.emailId, userData.authToken, userData.expiresIn);
+        if (u.authToken) {
           this.user = u;
-          let remainingTime = new Date(userData._tokenExpiryDate).getTime() - new Date().getTime();
-          this.autoLogout(remainingTime);
+          this.autoLogout(userData.expiresIn);
         }
      } else {
        this.router.navigate(["/login"]);
      }
   }
 
-  autoLogout(expirationDuration: number) {
+  autoLogout(expiresIn: Date) {
+    let remainingTime = new Date(expiresIn).getTime() - new Date().getTime();
     setTimeout(() => {
       this.onLogOut();
-    }, expirationDuration);
-  } */
+    }, remainingTime);
+  } 
 
   getUserData() {
     return this.user;

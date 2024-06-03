@@ -19,8 +19,6 @@ export class OrderListComponent implements OnInit{
     let orderForUser = this.orderPaymentService.getOrderForUser();
     orderForUser.subscribe(response => {
       for (let i of response) {
-
-        //this.orderList = [...this.orderList, ...i];
         this.orderList.push(i);
       }
     }, error => {

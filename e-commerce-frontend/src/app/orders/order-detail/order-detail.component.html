@@ -2,7 +2,7 @@
   <h3>Order ID: {{ orderItem.orderId }}</h3>
   <hr>
   <ul *ngFor="let i of orderItem.orderList">
-    <li class="list-group-item-text" style="list-style: square"><strong>Item Name:</strong> {{ i.product.name }} | <strong>Quantity:</strong> {{ i.quantity }}</li>
+    <li class="list-group-item-text" ><strong>Item Name:</strong> {{ i.product.name }} | <strong>Quantity:</strong> {{ i.quantity }}</li>
   </ul>
   <hr>
   <div>

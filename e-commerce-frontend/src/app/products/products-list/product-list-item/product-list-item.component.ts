@@ -10,7 +10,7 @@ import {ProductService} from "../../../services/product.service";
 export class ProductListItemComponent implements OnInit{
   @Input() itemIndex: any;
   @Input() item!: ProductModel;
-  ratingComponent: number;
+  ratingComponent: number = 0;
 
   constructor(private productService: ProductService) {
   }
@@ -23,6 +23,7 @@ export class ProductListItemComponent implements OnInit{
   ngOnInit(): void {
     const savedItemIndex = JSON.parse(localStorage.getItem('itemIndex'));
     const savedItem = JSON.parse(localStorage.getItem('item'));
+    console.log("Item is ", savedItem);
     this.ratingComponent = this.item.rating;
     if (savedItemIndex && parseInt(savedItemIndex,10) === this.itemIndex && savedItem.document_id === this.item.document_id) {
       this.item = JSON.parse(localStorage.getItem('item'));

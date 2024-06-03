@@ -50,8 +50,6 @@ export class PaymentComponent implements OnInit{
 
     this.orderPaymentService.saveOrder(orderPaymentInfo);
 
-    //save orders in db
-
   }
 
 

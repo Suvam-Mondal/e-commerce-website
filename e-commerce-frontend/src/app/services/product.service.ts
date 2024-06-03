@@ -56,7 +56,6 @@ export class ProductService implements OnInit {
           this.productForCategory.push(product);
 
         }
-        //localStorage.setItem('productListForCategory', JSON.stringify(this.productForCategory));
 
       }, error => {
         console.log("Error while fetching products ", error.messageerror);

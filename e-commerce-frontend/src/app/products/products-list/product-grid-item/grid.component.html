@@ -6,8 +6,11 @@
        (click)="saveSelectedListItem()" class="grid-list-item">
       <img src="{{item.img}}" alt="imgText">
       <h3 class="list-group-item-text">{{ item.name }}</h3>
-      <p>rating</p>
-      <h4 class="list-group-item-text"> INR {{ item.price }}</h4>
+      <div style="display: flex">
+        <app-star-rating [rating]="item.rating"></app-star-rating>
+      </div>
+      <h4><i class="fa fa-inr" aria-hidden="true"> {{ item.price }}</i></h4>
+
     </a>
 
   </div>
