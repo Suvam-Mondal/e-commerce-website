@@ -1,6 +1,6 @@
 package com.example.ecommerce.controller;
 
-import com.example.ecommerce.model.Product;
+import com.example.ecommerce.entity.Product;
 import com.example.ecommerce.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
@@ -34,13 +34,17 @@ public class ProductController {
 
     @GetMapping("/mongo/all")
     public List<com.example.ecommerce.entity.Product> getAllProductsFromMongo() {
+        log.info("getAllProductsFromMongo() called");
         return productService.getProducts();
     }
 
 
     @GetMapping("/mongo/{category}")
     public List<com.example.ecommerce.entity.Product> getProductsForCategory(@PathVariable("category") String category) {
-        return productService.getProductsForCategory(category.toLowerCase());
+        log.info("getProductsForCategory() called for category {}", category);
+        List<Product> productsForCategory = productService.getProductsForCategory(category.toLowerCase());
+        log.info("getProductsForCategory():: {}", productsForCategory);
+        return productsForCategory;
     }
 
     @GetMapping("/mongo/search/{searchKey}")
@@ -48,32 +52,6 @@ public class ProductController {
         return productService.getProductsForSearchKey(searchKey.toLowerCase());
     }
 
-
-
-/*
-    for firebase db
-
-     @PostMapping
-    public void storeProducts() {
-        productService.storeProducts1();
-        productService.storeProducts2();
-    }
-
-    @GetMapping("/all")
-    public List<Product> getAllProducts(@RequestParam("auth") String authToken) throws JsonProcessingException {
-        return productService.getProducts(authToken);
-    }
-
-    @GetMapping("/{category}")
-    public List<Product> getProductsForCategory(@RequestParam String authToken, @PathVariable("category") String category) throws ExecutionException, InterruptedException, JsonProcessingException {
-        return productService.getProductsForCategory(category, authToken);
-    }
-
-    @GetMapping("/search/{searchKey}")
-    public List<Product> getProductsForSearchKey(@RequestParam String authToken, @PathVariable String searchKey) throws ExecutionException, InterruptedException, JsonProcessingException {
-        return productService.getProductsForSearchKey(searchKey, authToken);
-    }
-*/
 
 
 }

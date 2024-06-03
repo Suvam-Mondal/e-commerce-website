@@ -1,7 +1,10 @@
 package com.example.ecommerce.service;
 
+import com.example.ecommerce.entity.User;
 import com.example.ecommerce.model.Auth;
+import com.example.ecommerce.repo.UserRepo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,9 +14,10 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class AuthService {
 
-    public String authenticate(Auth auth) throws ExecutionException, InterruptedException {
-        RestTemplate restTemplate = new RestTemplate();
-        auth.setReturnSecureToken(true);
-        return restTemplate.postForObject("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=", auth, String.class);
+    @Autowired
+    UserRepo userRepo;
+
+    public User newUser(User user) {
+        return userRepo.save(user);
     }
 }

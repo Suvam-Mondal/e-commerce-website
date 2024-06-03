@@ -32,20 +32,4 @@ public class OrdersController {
 
 
 
-/*
-    firebase db
-
-    @PostMapping()
-    public void addNewTodo(@RequestParam String authToken, @RequestBody OrderPayment orderPayment) throws ExecutionException, InterruptedException {
-        orderService.saveOrder(orderPayment, authToken);
-    }
-
-    @GetMapping()
-    public List<OrderPayment> getOrdersForUser(@RequestParam String userEmail, @RequestParam String authToken) throws JsonProcessingException {
-        return orderService.getOrdersForUser(userEmail, authToken);
-    }
-
-*/
-
-
 }
