@@ -1,5 +1,6 @@
 
 export interface AuthModel {
-  email: string;
+  emailId: string;
   password: string;
+  role: string
 }

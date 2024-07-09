@@ -1,8 +1,9 @@
 import {Injectable, OnInit} from "@angular/core";
 import {ProductModel} from "../shared/product.model";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {Subject} from "rxjs";
+import {Details} from "../shared/product-details.model";
 
 @Injectable()
 export class ProductService implements OnInit {
@@ -20,12 +21,18 @@ export class ProductService implements OnInit {
 
   getProductListForCategory(category: string) {
 
-    let authToken = this.authService.getUserData();
+    let userData = this.authService.getUserData();
 
     this.productForCategory = [];
 
-    this.http.get<ProductModel[]>(`http://localhost:8081/products/${category}?authToken=${authToken.token}`)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+userData.authToken
+      });
+
+    this.http.get<ProductModel[]>(`http://localhost:8081/products/mongo/${category}`, {headers})
       .subscribe(response => {
+        console.log("Fetched products ", response);
         for (let i of response) {
           let id = i.document_id;
           let name = i.name;
@@ -33,7 +40,8 @@ export class ProductService implements OnInit {
           let img = i.img;
           let brand = i.brand;
           let category = i.category;
-         // let rating = i.rating;
+          let rating = i.rating;
+          let detail = i.details;
 
           let product: ProductModel = {
             document_id: id,
@@ -42,12 +50,12 @@ export class ProductService implements OnInit {
             brand: brand,
             category: category,
             img: img,
-            //rating: rating
+            rating: rating,
+            details: detail
           };
           this.productForCategory.push(product);
 
         }
-        //localStorage.setItem('productListForCategory', JSON.stringify(this.productForCategory));
 
       }, error => {
         console.log("Error while fetching products ", error.messageerror);

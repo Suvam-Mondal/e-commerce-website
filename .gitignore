@@ -47,3 +47,4 @@ testem.log
 
 
 /e-commerce-backend/.gradle/
+/e-commerce-backend/build/

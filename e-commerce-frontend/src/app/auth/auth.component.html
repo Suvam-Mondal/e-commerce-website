@@ -1,12 +1,20 @@
 <div class="center-screen">
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-group">
+  <div>
+    <h2 *ngIf="isLoginFailure" class="error" >Invalid Username/Password !</h2>
+  </div>
+  <div>
+  
+  <form [formGroup]="loginForm" class="form-group">
     <h2>Login</h2>
     <br>
 
     <label id="email">E-mail:</label> <input [formControlName]="'email'" class="form-control" type="email">
     <label id="pwd">Password:</label> <input [formControlName]="'pwd'" class="form-control" type="password">
     <br>
-    <button type="submit" class="btn btn-primary">Login</button>
-
+    <div class="button-group">
+    <button type="button" class="btn btn-primary" (click)="onLogin()">Login</button>
+    <button type="button" class="btn btn-primary" (click)="onSignup()">Signup</button>
+  </div>
   </form>
+</div>
 </div>

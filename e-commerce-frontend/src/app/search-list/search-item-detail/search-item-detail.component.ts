@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {CartService} from "../../services/cart.service";
 import {ProductModel} from "../../shared/product.model";
@@ -14,6 +14,8 @@ export class SearchItemDetailComponent implements OnInit {
   itemData: ProductModel;
   shouldDisplayItemControls: boolean;
   quantity: number;
+  @ViewChild('listContainer') listContainer!: ElementRef;
+  i = [];
 
   constructor(private activatedRoute: ActivatedRoute,
               private searchService: SearchService,

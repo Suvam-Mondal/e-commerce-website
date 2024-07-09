@@ -1,5 +1,6 @@
 .center-screen {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 106px);
@@ -19,8 +20,20 @@
 }
 
 .center-screen form button {
-  display: block;
-  margin: 0 auto;
   background-color: greenyellow;
   color: black;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.error  {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgb(196, 88, 88);
+  color: white;
 }

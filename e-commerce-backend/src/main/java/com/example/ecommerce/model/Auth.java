@@ -7,7 +7,5 @@ public class Auth {
 
     String email;
     String password;
-    Boolean returnSecureToken;
-
 
 }

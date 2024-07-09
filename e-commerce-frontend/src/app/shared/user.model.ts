@@ -1,14 +1,5 @@
 export class UserModel {
 
-  constructor(public email: string,
-              public id: string,
-              private _token: string,
-              private _tokenExpiryDate: Date) {}
+ constructor(public email: string,public authToken: string, public expiresIn: Date) {}
 
-  get token() {
-    if (!this._tokenExpiryDate || new Date() > this._tokenExpiryDate) {
-      return null;
-    }
-    return this._token;
-  }
 }
