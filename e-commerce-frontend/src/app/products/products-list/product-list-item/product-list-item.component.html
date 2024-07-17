@@ -1,7 +1,7 @@
 <a
   routerLinkActive="active"
   [routerLink]="itemIndex"
-  (click) = "saveSelectedListItem()"
+  (click) = "onItemClick()"
   class="list-group-item clearfix custom-list-item">
   <span class="pull-left img-box">
     <img src="{{item.img}}" alt="imgText">

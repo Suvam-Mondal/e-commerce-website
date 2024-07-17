@@ -42,11 +42,12 @@ export class AuthComponent implements OnInit, OnDestroy {
     let pwd = this.loginForm.get('pwd').value;
     let auth: AuthModel = { emailId: email, password: pwd, role: 'USER' };
     this.authService.onLogin(auth, "action_login");
-    this.isAuthenticatedSubscriber = this.authService.isAuthenticated.subscribe(val => {
+    
+    /* this.isAuthenticatedSubscriber = this.authService.isAuthenticated.subscribe(val => {
       this.isLoginFailure = !val;
       console.log("onLogin()::isLoginFailure ", !val);
 
-    })
+    }) */
   }
 
   onSignup() {

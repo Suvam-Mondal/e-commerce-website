@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ShoppingCartModel} from "../../../shared/shopping-cart.model";
 import {CartService} from "../../../services/cart.service";
+import { CartState } from '../../../store/state.selector';
+import { Store } from '@ngrx/store';
+import { removeFromCartAction, addToCartAction } from '../../../store/cart/cart.action';
 
 @Component({
   selector: 'app-shopping-cart-list-items',
@@ -13,21 +16,22 @@ export class ShoppingCartListItemsComponent implements OnInit{
 
 
 
-  constructor(private cartService:CartService) {
-  }
+  constructor(private cartService:CartService,
+    private store: Store<{cart: CartState}>) {}
 
   ngOnInit(): void {
+  
     this.totalPrice = this.item.quantity * this.item.product.price;
 
   }
 
   onReduceItemQuantity() {
-    this.cartService.removeItemFromCart(this.item.product.document_id);
+    this.store.dispatch(removeFromCartAction({ itemId: this.item.product.document_id }));
 
   }
 
   onIncreaseItemQuantity() {
-    this.cartService.addItemToShoppingCart(this.item.product);
+    this.store.dispatch(addToCartAction({ product: this.item.product }));
 
   }
 

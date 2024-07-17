@@ -15,7 +15,7 @@ export class SearchItemDetailComponent implements OnInit {
   shouldDisplayItemControls: boolean;
   quantity: number;
   @ViewChild('listContainer') listContainer!: ElementRef;
-  i = [];
+  itemDetails = [];
 
   constructor(private activatedRoute: ActivatedRoute,
               private searchService: SearchService,
@@ -35,7 +35,7 @@ export class SearchItemDetailComponent implements OnInit {
           this.itemData = this.searchService.getProductDetail(id);
           localStorage.setItem('searchItemData', JSON.stringify(this.itemData));
         }
-        this.quantity = this.cartService.getQuantityForItem(this.itemData);
+        //this.quantity = this.cartService.getQuantityForItem(this.itemData);
         if (this.quantity > 0) {
           this.shouldDisplayItemControls = true;
         }
@@ -45,21 +45,21 @@ export class SearchItemDetailComponent implements OnInit {
 
 
   onAddToCart() {
-    this.quantity = this.cartService.addItemToShoppingCart(this.itemData);
+   // this.quantity = this.cartService.addItemToShoppingCart(this.itemData);
     this.shouldDisplayItemControls = true;
 
   }
 
   removeItem() {
-    this.quantity = this.cartService.removeItemFromCart(this.itemData.document_id);
+   /*  this.quantity = this.cartService.removeItemFromCart(this.itemData.document_id);
     if (this.quantity <= 0) {
       this.shouldDisplayItemControls = false;
-    }
+    } */
 
   }
 
   addItem() {
-    this.quantity = this.cartService.addItemToShoppingCart(this.itemData);
+    //this.quantity = this.cartService.addItemToShoppingCart(this.itemData);
   }
 
 }

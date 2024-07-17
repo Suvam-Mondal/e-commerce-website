@@ -2,67 +2,47 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {AuthModel} from "../shared/auth.model";
-import {Subject} from "rxjs";
+import {filter, map, Observable, pipe, Subject, Subscription, take, tap} from "rxjs";
 import {UserModel} from "../shared/user.model";
 import {AuthResponseModel} from "../shared/authResponse.model";
+import { select, Store } from "@ngrx/store";
+import { login, loginFailure, loginSuccess, logout } from "../store/auth/auth.action";
+import { AuthState } from "../store/state.selector";
+import { userDataSelector } from "../store/auth/auth.selector";
 
 @Injectable()
 export class AuthService {
 
   isAuthenticated = new Subject<boolean>();
   user: UserModel;
+  private authInfoSubscription: Subscription;
 
   constructor(private router: Router,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private store: Store<{authReducer: AuthState}>) {
   }
 
  
   onLogin(auth: AuthModel, action: string) {
     auth.role = "USER";
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Action': action
-      });
-
-    console.log("Sending onLogin request for ", auth);
-    this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth, {headers})
-      .subscribe(response => {
-        console.log("Successfully logged in...",response.authToken, "expiresIn ",response.expiresIn);
-        this.isAuthenticated.next(true);
-        this.user = new UserModel(auth.emailId, response.authToken, response.expiresIn);
-        localStorage.setItem('userData',JSON.stringify(this.user));
-        this.autoLogout(response.expiresIn);
-        this.router.navigate(["/products/mobile"]);
-      }, error => {
-        console.log("Error while logging in...", error);
-        this.isAuthenticated.next(false);
-      });
-
+      this.store.dispatch(login({auth, action}));
   }
 
 
   onLogOut() {
     //save cartList if any
     //clear index and indexData
-    this.clearLocalStorage();
-    this.user = null;
-    this.router.navigate(["/login"]);
+    this.store.dispatch(logout());
+   // this.user = null;
+   
   }
 
-  clearLocalStorage() {
-    localStorage.removeItem('userData');
-    localStorage.removeItem('item');
-    localStorage.removeItem('itemIndex');
-    localStorage.removeItem('searchItemIndex');
-    localStorage.removeItem('searchItemData');
-
-  }
 
   isUserLoggedIn() {
-    const userData: {emailId: string, authToken: string, expiresIn: Date} = JSON.parse(localStorage.getItem('userData'));
+    const userData = JSON.parse(localStorage.getItem('userData'));
 
     if (userData != null) {
-      const u = new UserModel(userData.emailId, userData.authToken, userData.expiresIn);
+      const u = new UserModel(userData.email, userData.authToken, userData.expiresIn);
       if (u.authToken) {
         return true;
       } else {
@@ -71,20 +51,17 @@ export class AuthService {
    }
   }
 
-
-
    autoLogin() {
-    const userData: {emailId: string, authToken: string, expiresIn: Date} = JSON.parse(localStorage.getItem('userData'));
+    console.log("Auto login called");
+    this.getUserData();
+    if(this.user != null) {
+      if (this.user.authToken) {
+        this.autoLogout(this.user.expiresIn);
+      }
+    } else {
+      this.router.navigate(["/login"]);
+    }
 
-     if (userData != null) {
-        const u = new UserModel(userData.emailId, userData.authToken, userData.expiresIn);
-        if (u.authToken) {
-          this.user = u;
-          this.autoLogout(userData.expiresIn);
-        }
-     } else {
-       this.router.navigate(["/login"]);
-     }
   }
 
   autoLogout(expiresIn: Date) {
@@ -94,9 +71,25 @@ export class AuthService {
     }, remainingTime);
   } 
 
-  getUserData() {
-    return this.user;
+  getUserFromApi(auth: any, action: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Action': action
+      });
+      return this.http.post<AuthResponseModel>("http://localhost:8081/auth",auth, {headers});
+      
   }
+
+  getUserData() {
+    //get user data from store
+    this.store.pipe(select(userDataSelector)).subscribe(data => {
+      this.user = data;
+    }); 
+
+  return this.user;
+
+  }
+
 
 
 }

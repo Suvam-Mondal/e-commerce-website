@@ -1,27 +1,28 @@
-import {Component, OnInit} from '@angular/core';
-import {CartService} from "../../services/cart.service";
-import {ShoppingCartModel} from "../../shared/shopping-cart.model";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ShoppingCartModel } from "../../shared/shopping-cart.model";
+import { Router } from "@angular/router";
+import { Store } from '@ngrx/store';
+import { CartState } from '../../store/state.selector';
+import { resetCartList } from '../../store/cart/cart.action';
+import { selectCartItems } from '../../store/cart/cart.selector';
 
 @Component({
   selector: 'app-shopping-cart-list',
   templateUrl: './shopping-cart-list.component.html',
   styleUrl: './shopping-cart-list.component.css'
 })
-export class ShoppingCartListComponent implements OnInit{
+export class ShoppingCartListComponent implements OnInit {
 
-  cartList: ShoppingCartModel[];
+  cartList: ShoppingCartModel[] = [];
 
-  constructor(private cartService: CartService,
-              private router: Router) {
+  constructor(private router: Router,
+    private store: Store<{ cart: CartState }>) {
   }
 
   ngOnInit(): void {
-    this.cartList = this.cartService.getShoppingListFromLocalStorage();
-    this.cartService.shoppingCarListSubject.subscribe(value => {
-      this.cartList = value;
-    })
-
+    this.store.select(selectCartItems).subscribe(items => {
+      this.cartList = items;
+    });
   }
 
 
@@ -31,6 +32,6 @@ export class ShoppingCartListComponent implements OnInit{
   }
 
   onClearCart() {
-    this.cartService.clearCartList();
+    this.store.dispatch(resetCartList());
   }
 }

@@ -3,7 +3,9 @@
       <app-product-list-item
         *ngFor="let item of productList | sort:sortItemsBy ; let itemIndex = index"
         [itemIndex]="itemIndex"
-        [item]="item">
+        [item]="item"
+        (selectedItem)="onListItemSelected($event)"
+        >
       </app-product-list-item>
   </div>
 
@@ -13,7 +15,8 @@
     <app-grid
       *ngFor="let item of productList | sort:sortItemsBy ; let itemIndex = index"
       [itemIndex]="itemIndex"
-      [item]="item">
+      [item]="item"
+      (selectedItem)="onListItemSelected($event)">
     </app-grid>
 
   </div>

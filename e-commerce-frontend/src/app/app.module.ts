@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -42,6 +42,32 @@ import {MatIcon} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import { HeroContainerComponent } from './hero-container/hero-container.component';
+import { ActionReducerMap, META_REDUCERS, MetaReducer, Store, StoreModule } from '@ngrx/store';
+import { authReducer } from './store/auth/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffect } from './store/auth/auth.effect';
+import { productReducer } from './store/product/product.reducer';
+import { AuthState, CartState, ProductState } from './store/state.selector';
+import { ProductEffect } from './store/product/product.effect';
+import { cartReducer } from './store/cart/cart.reducer';
+import { CartEffects } from './store/cart/cart.effects';
+
+
+
+
+export interface AppState {
+  auth: AuthState;
+  product: ProductState;
+  cart: CartState;
+}
+
+const reducers: ActionReducerMap<AppState> = {
+  auth: authReducer,
+  product: productReducer,
+  cart: cartReducer
+};
+
+
 
 @NgModule({
   declarations: [
@@ -81,7 +107,9 @@ import { HeroContainerComponent } from './hero-container/hero-container.componen
     FontAwesomeModule,
     MatIcon,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffect, ProductEffect, CartEffects])
   ],
   providers: [ProductService, CartService, SearchService, OrderPaymentsService, AuthService, provideAnimationsAsync()],
   bootstrap: [AppComponent]

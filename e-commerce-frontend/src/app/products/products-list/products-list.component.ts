@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ProductModel} from "../../shared/product.model";
 import {ProductService} from "../../services/product.service";
-import {Subscription} from "rxjs";
+import {Subscription, switchMap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -24,14 +24,17 @@ export class ProductsListComponent  implements OnInit, OnDestroy{
               private activatedRoute: ActivatedRoute) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.sortItemsBy = this.productService.getStoredSortByValue();
     this.shouldDisplayAsList = this.productService.getStoredDisplayToggleValue();
 
-    this.activatedRoute.paramMap.subscribe(params =>  {
-      this.selectedCategory = params.get('category');
-      this.productList = this.productService.getProductListForCategory(this.selectedCategory);
+    this.activatedRoute.paramMap
+    .pipe(
+      switchMap(params => this.productService.getProductListForCategory(params.get('category')))
+    )
+    .subscribe(productList => {
+      this.productList = productList;
     });
 
    this.displayListToggleSubscriber = this.productService.displayListToggle
@@ -47,6 +50,7 @@ export class ProductsListComponent  implements OnInit, OnDestroy{
 
 
   }
+
 
   ngOnDestroy(): void {
     this.currentCategorySubscriber.unsubscribe();
