@@ -21,12 +21,12 @@ import java.util.function.Function;
 
 @Slf4j
 @Service
-public class JwtService {
+public class JwtUtil {
 
     private String SECRET_KEY;
     private Date expiresIn;
 
-    public JwtService() {
+    public JwtUtil() {
         SECRET_KEY = generateSecretKey();
     }
 
@@ -44,7 +44,7 @@ public class JwtService {
     }
 
     private Date setExpiryTime() {
-        expiresIn = new Date(System.currentTimeMillis() + 1000 * 60 * 3); // 3 minutes
+        expiresIn = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 3); // 3 hours
         return expiresIn;
     }
 

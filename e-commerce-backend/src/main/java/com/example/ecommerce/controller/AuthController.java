@@ -1,8 +1,8 @@
 package com.example.ecommerce.controller;
 
-import com.example.ecommerce.entity.User;
 import com.example.ecommerce.model.AuthResponse;
-import com.example.ecommerce.security.config.JwtService;
+import com.example.ecommerce.model.User;
+import com.example.ecommerce.security.config.JwtUtil;
 import com.example.ecommerce.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -21,23 +21,24 @@ public class AuthController {
 
     private final AuthService authService;
     private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
+    private final JwtUtil jwtUtil;
 
 
     @Autowired
     public AuthController(final AuthService authService,
                           final AuthenticationManager authenticationManager,
-                          final JwtService jwtService) {
+                          final JwtUtil jwtUtil) {
         this.authService = authService;
         this.authenticationManager = authenticationManager;
-        this.jwtService = jwtService;
+        this.jwtUtil = jwtUtil;
     }
 
-  /*  @PostMapping("/new")
-    public User createNewUser() {
-        log.info("createNewUser() called");
-        return authService.newUser();
-    }*/
+
+    @GetMapping
+    public String test() {
+        log.info("test() called");
+        return "Hello World";
+    }
 
     @PostMapping
     public ResponseEntity<AuthResponse> authenticate(@RequestBody User user, HttpServletRequest request) {
@@ -50,15 +51,15 @@ public class AuthController {
 
         AuthResponse authResponse = new AuthResponse();
 
-        Authentication authentication =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
+        Authentication authentication =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            log.info("Successfully authenticated user {}", user.getEmailId());
-            authResponse.setAuthToken(jwtService.generateToken(user.getEmailId()));
-            authResponse.setExpiresIn(jwtService.getExpiryTime());
+            log.info("Successfully authenticated user {}", user.getUsername());
+            authResponse.setAuthToken(jwtUtil.generateToken(user.getUsername()));
+            authResponse.setExpiresIn(jwtUtil.getExpiryTime());
             return  ResponseEntity.ok().body(authResponse);
             //return jwtService.generateToken(user.getEmailId());
         } else {
-            log.info("User {} Failed to login", user.getEmailId());
+            log.info("User {} Failed to login", user.getUsername());
             authResponse.setErrorMessage("User not authenticated");
             return ResponseEntity.badRequest().body(authResponse);
            // return "User not authenticated";

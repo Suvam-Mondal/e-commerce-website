@@ -1,6 +1,8 @@
 package com.example.ecommerce.service;
 
-import com.example.ecommerce.repo.OrdersRepo;
+import com.example.ecommerce.model.OrderPayment;
+import com.example.ecommerce.model.OrderResponse;
+import com.example.ecommerce.repo.OrderRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +12,20 @@ import java.util.List;
 @Slf4j
 public class OrderService {
 
-    private final OrdersRepo ordersRepo;
+    private final OrderRepo ordersRepo;
 
-    public OrderService(final OrdersRepo ordersRepo) {
+    public OrderService(final OrderRepo ordersRepo) {
         this.ordersRepo = ordersRepo;
     }
 
-    public List<com.example.ecommerce.entity.OrderPayment> getOrdersForUser(String userId) {
+    public List<OrderResponse> getOrdersForUser(String userId) {
 
-        return ordersRepo.findAll();
+        return ordersRepo.getAll(userId);
 
     }
 
-    public void saveOrder(com.example.ecommerce.entity.OrderPayment orderPayment)  {
-        ordersRepo.save(orderPayment);
+    public void saveOrder(OrderPayment orderPayment)  {
+        ordersRepo.saveOrder(orderPayment);
 
     }
 

@@ -35,11 +35,8 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt:0.12.5'
 
 
-	//firebase
-	implementation 'com.google.firebase:firebase-admin:9.2.0'
-
-	//mongo db
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	//sql connection
+	implementation 'mysql:mysql-connector-java:8.0.29'
 
 }
 

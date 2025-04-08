@@ -1,23 +1,27 @@
 package com.example.ecommerce.service;
 
-import com.example.ecommerce.entity.User;
-import com.example.ecommerce.model.Auth;
-import com.example.ecommerce.repo.UserRepo;
+import com.example.ecommerce.model.User;
+import com.example.ecommerce.repo.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.concurrent.ExecutionException;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
 public class AuthService {
 
     @Autowired
-    UserRepo userRepo;
+    UserRepository userRepo;
 
-    public User newUser(User user) {
-        return userRepo.save(user);
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
+
+    @Transactional
+    public void newUser(User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        userRepo.createNewUser(user.getUsername(), encodedPassword, user.getRole());
     }
 }

@@ -1,15 +1,13 @@
 package com.example.ecommerce.controller;
 
-import com.example.ecommerce.entity.Product;
+import com.example.ecommerce.model.Product;
 import com.example.ecommerce.service.ProductService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -26,32 +24,30 @@ public class ProductController {
 
 
 
-    @PostMapping("/mongo/store")
-    public void storeProducts_mongo() {
-        productService.storeProducts1_mongo();
-        productService.storeProducts2_mongo();
+    @PostMapping("/store")
+    public void initializeProducts() {
+        productService.initializeProducts();
     }
 
-    @GetMapping("/mongo/all")
-    public List<com.example.ecommerce.entity.Product> getAllProductsFromMongo() {
-        log.info("getAllProductsFromMongo() called");
+    @GetMapping("/all")
+    public List<com.example.ecommerce.model.Product> getAllProducts() {
+        log.info("getAllProducts() called");
         return productService.getProducts();
     }
 
 
-    @GetMapping("/mongo/{category}")
-    public List<com.example.ecommerce.entity.Product> getProductsForCategory(@PathVariable("category") String category) {
+  @GetMapping("/{category}")
+    public List<com.example.ecommerce.model.Product> getProductsForCategory(@PathVariable("category") String category) {
         log.info("getProductsForCategory() called for category {}", category);
         List<Product> productsForCategory = productService.getProductsForCategory(category.toLowerCase());
         log.info("getProductsForCategory():: {}", productsForCategory);
         return productsForCategory;
     }
 
-    @GetMapping("/mongo/search/{searchKey}")
-    public List<com.example.ecommerce.entity.Product> getProductsForSearchKey(@PathVariable String searchKey)  {
+      @GetMapping("/search/{searchKey}")
+    public List<com.example.ecommerce.model.Product> getProductsForSearchKey(@PathVariable String searchKey)  {
         return productService.getProductsForSearchKey(searchKey.toLowerCase());
     }
-
 
 
 }

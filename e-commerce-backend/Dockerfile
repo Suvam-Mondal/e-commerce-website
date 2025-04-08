@@ -1,4 +1,5 @@
-FROM openjdk:17
-EXPOSE 8081
-ADD build/libs/e-commerce-backend.jar e-commerce-backend.jar
-ENTRYPOINT ["java","-jar","/e-commerce-backend.jar"]
+FROM openjdk:17-jdk-alpine
+VOLUME /tmp
+COPY build/libs/e-commerce-backend-0.0.1-SNAPSHOT.jar e-commerce-backend.jar
+ENTRYPOINT ["java", "-jar", "/e-commerce-backend.jar"]
+
